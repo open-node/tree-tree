@@ -1,0 +1,21 @@
+{
+  "name": "tree-tree",
+  "version": "1.0.0",
+  "description": "cli tree output",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com/open-node/tree-tree.git"
+  },
+  "keywords": [
+    "tree"
+  ],
+  "author": "Redstone Zhao",
+  "license": "MIT",
+  "devDependencies": {
+    "mocha": "^3.1.2"
+  }
+}

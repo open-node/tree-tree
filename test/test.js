@@ -8,26 +8,39 @@ describe('Tree test', function() {
       name: 'Results',
       children: [{
         name: '宝马',
-        keywords: ['宝马', 'BMW'],
         children: [{
           name: '3系',
-          keywords: ['3系', '3 系']
+          children: [{
+            name: '老款'
+          }, {
+            name: '新款'
+          }]
         }, {
-          name: '5系',
-          keywords: ['5系', '5 系']
+          name: '5系'
         }, {
-          name: '7系',
-          keywords: ['7系', '7 系']
+          name: '7系'
         }]
       }, {
         name: '奔驰',
-        keywords: ['奔驰', 'Benz', 'benz', '宾士'],
         children: [{
           name: 'SUV',
-          keywords: ['gla', 'glc', 'gle', 'gls']
+          children: [{
+            name: 'GLA'
+          }, {
+            name: 'GLC'
+          }]
         }, {
           name: '轿车',
-          keywords: ['E级', 'C级', 'A级']
+          children: [{
+            name: 'E级'
+          }, {
+            name: 'S级',
+            children: [{
+              name: '新款',
+            }, {
+              name: '老款'
+            }]
+          }]
         }]
       }]
     };

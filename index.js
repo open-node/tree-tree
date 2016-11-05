@@ -5,22 +5,27 @@ var chars = {
   last: '└── '
 };
 
-var toString = function(tree, p, last) {
-  var pre = p || '';
-  var strings = [pre + tree.name];
-  var _pre = '';
-  var lastIndex;
-  if (tree.children && tree.children.length) {
-    lastIndex = tree.children.length - 1;
-    if (pre) {
-      _pre = last ? chars.space : chars.pre;
+var toString = function(tree, pre) {
+  var string = [], childrenPre = [];
+  tree.forEach(function(node, index) {
+    var last = index === tree.length - 1;
+    string.push([].concat(pre, last ? chars.last : chars.first, node.name).join(''));
+    if (node.children && node.children.length) {
+      if (pre.length) {
+        childrenPre = pre.concat(last ? chars.space : chars.pre);
+      } else {
+        childrenPre = [last ? chars.space: chars.pre];
+      }
+      string = string.concat(toString(node.children, childrenPre));
     }
-    strings = strings.concat(tree.children.map(function(x, index) {
-      var _last = index === lastIndex;
-      return toString(x, _pre + (_last ? chars.last : chars.first), _last);
-    }));
-  }
-  return strings.join('\n');
+  });
+  return string;
 };
 
-module.exports = toString;
+module.exports = function(tree) {
+  var string = [tree.name];
+  if (tree.children && tree.children.length) {
+    string = string.concat(toString(tree.children, []));
+  }
+  return string.join('\n');
+};
